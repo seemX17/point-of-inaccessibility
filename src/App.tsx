@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './assets/images/logo.png'
 import polygon_one from './assets/images/polygon_one.svg'
-import './assets/styles/App.css'
+import './assets/styles/App.scss'
 
 function App() {
   return (

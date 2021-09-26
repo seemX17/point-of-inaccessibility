@@ -1,5 +1,10 @@
+@import './theme/theme';
+@import './components/button';
+@import './pages/add';
+
 .App {
   text-align: center;
+  color: $brand-primary;
 }
 
 .App-logo {
@@ -16,19 +21,5 @@
 }
 
 .App-link {
-  color: #61dafb;
-}
-
-.polygon{
-  height: 40vmin
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  color: $brand-link;
 }
