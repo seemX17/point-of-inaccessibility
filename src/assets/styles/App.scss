@@ -3,7 +3,6 @@
 @import './pages/add';
 
 .App {
-  text-align: center;
   color: $brand-primary;
 }
 
@@ -18,9 +17,20 @@
   align-items: flex-start;
   justify-content: center;
   padding: 1em;
-  margin-bottom: 2em;
 }
 
 .App-link {
-  color: $brand-link;
+  color: $brand-secondary;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    color: #5f249f;
+  }
+}
+
+.App-navigation {
+  margin-bottom: 2em;
+  text-align: right;
+  padding-right: 2em;
 }

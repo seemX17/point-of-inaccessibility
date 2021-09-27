@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { listToMatrix } from 'utils/conversion';
 import { QuadTree } from 'utils/quadtree';
 
@@ -10,6 +11,7 @@ export function AddPolygon() {
     const [showError, setShowError] = useState(false);
     const [isActive, setIsActive] = useState(false);
 
+    //On file selection through Browse file
     const onFileChange = (event: any) => {
         //convert type file to svg element
         let reader = new FileReader()
@@ -26,6 +28,7 @@ export function AddPolygon() {
         setFileName(event?.target.files[0].name);
     }
 
+    //On click of Render button add label to SVG
     const render = () => {
         if (valid()) {
             assignLabel();
@@ -35,6 +38,7 @@ export function AddPolygon() {
         }
     }
 
+    //function to add label to the SVG
     const assignLabel = () => {
         //get SVG element
         let svgelement = document.getElementById("renderImage")?.querySelector("svg");
@@ -68,6 +72,7 @@ export function AddPolygon() {
         svgelement?.appendChild(text);
     }
 
+    //Validation
     const valid = () => {
         if (labelText != "" && file)
             return true
@@ -115,30 +120,36 @@ export function AddPolygon() {
         e.stopPropagation();
     };
 
-    return <div className="add-polygon-container">
-        <div className="form" >
-            <h2 className="title">Create SVG</h2>
-            <div className="label-input">
-                <label>Label Name</label>
-                <input type="text" value={labelText} onChange={(e) => { setLabelText(e.target.value) }} />
-            </div>
-            <div className={`drag-area ${isActive ? 'active' : ''}`} onDrop={e => handleDrop(e)}
-                onDragOver={e => handleDragOver(e)}
-                onDragEnter={e => handleDragEnter(e)}
-                onDragLeave={e => handleDragLeave(e)}>
-                <div className="icon"><i className="fas fa-cloud-upload-alt"></i></div>
-                <header>Drag &amp; Drop to Upload File</header>
-                <span>OR</span>
-                <button className="button-outline">Browse File
-                    <input type="file" name="polygon" accept="image/svg+xml" onChange={onFileChange} />
-                </button>
-                {fileName ? <h6>File added: {fileName}</h6> : <h6></h6>}
-            </div>
-            <label className="error" style={{ display: showError ? 'flex' : 'none', marginBottom: '5px' }}>All fields are mandatory!</label>
-            <button className="button submit" onClick={render}>Render</button>
+    return <>
+        <div className="App-navigation">
+            <Link to="/history" className="App-link"> View History <i className="fas fa-chevron-right"></i></Link>
         </div>
-        <div id="renderImage" className='image-preview' ref={imageI}>
-            SVG preview
+        <div className="add-polygon-container">
+            <div className="form" >
+                <h2 className="title">Create SVG</h2>
+                <div className="label-input">
+                    <label>Label Name</label>
+                    <input type="text" value={labelText} onChange={(e) => { setLabelText(e.target.value) }} />
+                </div>
+                <div className={`drag-area ${isActive ? 'active' : ''}`} onDrop={e => handleDrop(e)}
+                    onDragOver={e => handleDragOver(e)}
+                    onDragEnter={e => handleDragEnter(e)}
+                    onDragLeave={e => handleDragLeave(e)}>
+                    <div className="icon"><i className="fas fa-cloud-upload-alt"></i></div>
+                    <header>Drag &amp; Drop to Upload File</header>
+                    <span>OR</span>
+                    <button className="button-outline">Browse File
+                        <input type="file" name="polygon" accept="image/svg+xml" onChange={onFileChange} />
+                    </button>
+                    {fileName ? <h6>File added: {fileName}</h6> : <h6></h6>}
+                </div>
+                <label className="error" style={{ display: showError ? 'flex' : 'none', marginBottom: '5px' }}>All fields are mandatory!</label>
+                <button className="button submit" onClick={render}>Render</button>
+            </div>
+            <div id="renderImage" className='image-preview' ref={imageI}>
+                SVG preview
+            </div>
         </div>
-    </div>
+    </>
+
 }
