@@ -131,13 +131,14 @@ export function AddPolygon() {
         e.stopPropagation();
     };
 
-    return <div>
+    return <div className="add-polygon-page">
         <div className="App-navigation">
+            <h2 className="title">Create SVG</h2>
             <Link to="/history" className="App-link"> View History <i className="fas fa-chevron-right"></i></Link>
         </div>
-        <div className="add-polygon-container">
+        <div className="container">
             <div className="form" >
-                <h2 className="title">Create SVG</h2>
+                {/* <h2 className="title">Create SVG</h2> */}
                 <div className="label-input">
                     <label>Label Name</label>
                     <input type="text" value={labelText} onChange={(e) => { setLabelText(e.target.value) }} />
