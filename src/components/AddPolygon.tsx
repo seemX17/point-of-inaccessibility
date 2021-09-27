@@ -6,7 +6,9 @@ export function AddPolygon() {
     let imageI: any = React.createRef()
     const [labelText, setLabelText] = useState("I'm here!");
     const [file, setFile] = useState('');
+    const [fileName, setFileName] = useState('');
     const [showError, setShowError] = useState(false);
+    const [isActive, setIsActive] = useState(false);
 
     const onFileChange = (event: any) => {
         //convert type file to svg element
@@ -21,6 +23,7 @@ export function AddPolygon() {
             renderDiv?.insertAdjacentHTML('beforeend', fileContent);//insert svg element in empty div created
         });
         reader.readAsBinaryString(event?.target.files[0]);
+        setFileName(event?.target.files[0].name);
     }
 
     const render = () => {
@@ -50,11 +53,16 @@ export function AddPolygon() {
         let poI = quadtree.getPoI();
 
         //create label as Text element, set position and insert in the SVG
-        let text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        text.setAttribute('x', poI[0]);
-        text.setAttribute('y', poI[1]);
-        text.setAttribute('text-anchor', 'middle');
-        text.innerHTML = labelText;
+        let text = svgelement?.getElementsByTagName('text')[0];
+        if (text) {
+            text.innerHTML = labelText
+        } else {
+            text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', poI[0]);
+            text.setAttribute('y', poI[1]);
+            text.setAttribute('text-anchor', 'middle');
+            text.innerHTML = labelText;
+        }
 
         //add text to svg element
         svgelement?.appendChild(text);
@@ -66,6 +74,46 @@ export function AddPolygon() {
         return false
     }
 
+    //Drag & Drop functions
+    const handleDragEnter = (e: any) => {
+        e.preventDefault();
+        setIsActive(true);
+        e.stopPropagation();
+    };
+    const handleDragLeave = (e: any) => {
+        e.preventDefault();
+        setIsActive(false);
+        e.stopPropagation();
+    };
+    const handleDragOver = (e: any) => {
+        e.preventDefault();
+        setIsActive(true);
+        e.stopPropagation();
+    };
+    const handleDrop = (e: any) => {
+        e.preventDefault();
+        let file = e.dataTransfer.files[0];
+        if (file.type != "image/svg+xml") {
+            alert("Please add svg only")
+        } else {
+            //convert type file to svg element
+            let reader = new FileReader()
+            reader.addEventListener('load', (e) => {
+                let fileContent: any = e.target?.result;
+                setFile(fileContent);
+                //Render svg on svg viewer
+                let renderDiv = document.getElementById("renderImage");
+                if (renderDiv)
+                    renderDiv.innerHTML = '';
+                renderDiv?.insertAdjacentHTML('beforeend', fileContent);//insert svg element in empty div created
+            });
+            reader.readAsBinaryString(file);
+            setFileName(file.name);
+        }
+        console.log(file)
+        setIsActive(false);
+        e.stopPropagation();
+    };
 
     return <div className="add-polygon-container">
         <div className="form" >
@@ -74,13 +122,17 @@ export function AddPolygon() {
                 <label>Label Name</label>
                 <input type="text" value={labelText} onChange={(e) => { setLabelText(e.target.value) }} />
             </div>
-            <div className="drag-area">
+            <div className={`drag-area ${isActive ? 'active' : ''}`} onDrop={e => handleDrop(e)}
+                onDragOver={e => handleDragOver(e)}
+                onDragEnter={e => handleDragEnter(e)}
+                onDragLeave={e => handleDragLeave(e)}>
                 <div className="icon"><i className="fas fa-cloud-upload-alt"></i></div>
                 <header>Drag &amp; Drop to Upload File</header>
                 <span>OR</span>
                 <button className="button-outline">Browse File
                     <input type="file" name="polygon" accept="image/svg+xml" onChange={onFileChange} />
                 </button>
+                {fileName ? <h6>File added: {fileName}</h6> : <h6></h6>}
             </div>
             <label className="error" style={{ display: showError ? 'flex' : 'none', marginBottom: '5px' }}>All fields are mandatory!</label>
             <button className="button submit" onClick={render}>Render</button>
