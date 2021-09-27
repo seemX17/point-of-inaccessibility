@@ -1,3 +1,127 @@
-.polygon {
-    height: 40vmin
+.add-polygon-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .image-preview {
+        width: 70vmin;
+        height: 70vmin;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $brand-secondary;
+        padding: 20px;
+
+        svg {
+            height: 100%;
+        }
+    }
+
+    .upload-container {
+        height: 70vmin;
+        width: 70vmin;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px 30px;
+        box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.001), 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .title {
+        margin-top: 0px;
+    }
+
+    .submit {
+        width: 100%;
+    }
+
+    text {
+        font-size: 2em;
+    }
+
+    //form input
+    .label-input {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color: $brand-primary;
+        font-family: 'Mulish';
+        margin-bottom: 2em;
+        width: 100%;
+
+        label {
+            text-align: left;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        input {
+            padding: 13px;
+            //font-weight: 400;
+            color: $brand-primary;
+            border: 1px solid #dae1e7;
+            margin-top: 5px;
+            font-size: 18px;
+
+            &:focus-visible {
+                outline: none;
+            }
+        }
+    }
+
+    //Drag area
+    .drag-area {
+        border: 2px dashed #dae1e7;
+        height: 500px;
+        width: 100%;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 2em;
+    }
+
+    .drag-area.active {
+        border: 2px solid $brand-primary;
+    }
+
+    .drag-area .icon {
+        font-size: 55px;
+        color: #9a9a96;
+    }
+
+    .drag-area header {
+        font-size: 20px;
+        font-weight: 500;
+        color: $brand-primary;
+    }
+
+    .drag-area span {
+        font-size: 15px;
+        font-weight: 500;
+        color: $brand-primary;
+        margin: 10px 0 15px 0;
+    }
+
+    .drag-area img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .drag-area button {
+        position: relative;
+
+        input {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
 }

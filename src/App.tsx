@@ -1,6 +1,5 @@
-import React from 'react';
+import { AddPolygon } from 'components/AddPolygon'
 import logo from './assets/images/logo.png'
-import polygon_one from './assets/images/polygon_one.svg'
 import './assets/styles/App.scss'
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
       </header>
-      <img src={polygon_one} className='polygon' alt='logo' />
+      <AddPolygon />
     </div>
   )
 }
