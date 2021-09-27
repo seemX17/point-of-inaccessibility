@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { listToMatrix } from 'utils/conversion';
-import { QuadTree } from 'utils/quadtree';
+import { addNewImage, imageModel } from 'shared/services/images';
+import { listToMatrix } from 'shared/utils/conversion';
+import { QuadTree } from 'shared/utils/quadtree';
 
 export function AddPolygon() {
     let imageI: any = React.createRef()
@@ -70,6 +71,16 @@ export function AddPolygon() {
 
         //add text to svg element
         svgelement?.appendChild(text);
+
+        //save rendered image
+        let payload: imageModel = {
+            svg: `${svgelement?.outerHTML}`,
+            name: fileName,
+            createdAt: new Date()
+        }
+        addNewImage(payload).then((res) => {
+            console.log("item added")
+        })
     }
 
     //Validation
@@ -120,7 +131,7 @@ export function AddPolygon() {
         e.stopPropagation();
     };
 
-    return <>
+    return <div>
         <div className="App-navigation">
             <Link to="/history" className="App-link"> View History <i className="fas fa-chevron-right"></i></Link>
         </div>
@@ -150,6 +161,6 @@ export function AddPolygon() {
                 SVG preview
             </div>
         </div>
-    </>
+    </div>
 
 }

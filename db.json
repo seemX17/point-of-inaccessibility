@@ -1,0 +1,10 @@
+{
+  "images": [
+    {
+      "svg": "<svg id=\"Ebene_1\" xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" viewBox=\"0 0 841.9 1190.6\" version=\"1.1\" y=\"0px\" x=\"0px\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" enable-background=\"new 0 0 841.9 1190.6\">\n    <polygon points=\"420 30 500 310 670 450 323 434\" fill=\"transparent\" stroke=\"#000\"></polygon>\n<text x=\"450.61268274159863\" y=\"318.9493070058857\" text-anchor=\"middle\">label here!</text></svg>",
+      "name": "polygon_two.svg",
+      "createdAt": "2021-09-27T17:31:28.476Z",
+      "id": 1
+    }
+  ]
+}
