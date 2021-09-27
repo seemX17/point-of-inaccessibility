@@ -1,6 +1,8 @@
 @import './theme/theme';
 @import './components/button';
+@import './components/card';
 @import './pages/add';
+@import './pages/history';
 
 .App {
   color: $brand-primary;
@@ -30,7 +32,15 @@
 }
 
 .App-navigation {
-  margin-bottom: 2em;
-  text-align: right;
-  padding-right: 2em;
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+li {
+  list-style: none;
+}
+
+.title {
+  margin-top: 0px;
 }

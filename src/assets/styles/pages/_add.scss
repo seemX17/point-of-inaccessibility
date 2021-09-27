@@ -1,11 +1,11 @@
-.add-polygon-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+.add-polygon-page {
+    padding: 0px 30px;
 
-    .title {
-        margin-top: 0px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
     .submit {
