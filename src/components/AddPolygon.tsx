@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { listToMatrix } from 'utils/conversion';
 import { QuadTree } from 'utils/quadtree';
-import { DragDrop } from './DragDrop';
 
 export function AddPolygon() {
     let imageI: any = React.createRef()
     const [labelText, setLabelText] = useState("I'm here!");
+    const [file, setFile] = useState('');
+    const [showError, setShowError] = useState(false);
 
     const onFileChange = (event: any) => {
         //convert type file to svg element
         let reader = new FileReader()
         reader.addEventListener('load', (e) => {
             let fileContent: any = e.target?.result;
+            setFile(fileContent);
             //Render svg on svg viewer
             let renderDiv = document.getElementById("renderImage");
             if (renderDiv)
@@ -22,6 +24,15 @@ export function AddPolygon() {
     }
 
     const render = () => {
+        if (valid()) {
+            assignLabel();
+            setShowError(false);
+        } else {
+            setShowError(true);
+        }
+    }
+
+    const assignLabel = () => {
         //get SVG element
         let svgelement = document.getElementById("renderImage")?.querySelector("svg");
         let polygonElement = svgelement?.querySelector('polygon');
@@ -44,12 +55,20 @@ export function AddPolygon() {
         text.setAttribute('y', poI[1]);
         text.setAttribute('text-anchor', 'middle');
         text.innerHTML = labelText;
+
+        //add text to svg element
         svgelement?.appendChild(text);
+    }
+
+    const valid = () => {
+        if (labelText != "" && file)
+            return true
+        return false
     }
 
 
     return <div className="add-polygon-container">
-        <div className="upload-container" >
+        <div className="form" >
             <h2 className="title">Create SVG</h2>
             <div className="label-input">
                 <label>Label Name</label>
@@ -63,6 +82,7 @@ export function AddPolygon() {
                     <input type="file" name="polygon" accept="image/svg+xml" onChange={onFileChange} />
                 </button>
             </div>
+            <label className="error" style={{ display: showError ? 'flex' : 'none', marginBottom: '5px' }}>All fields are mandatory!</label>
             <button className="button submit" onClick={render}>Render</button>
         </div>
         <div id="renderImage" className='image-preview' ref={imageI}>
