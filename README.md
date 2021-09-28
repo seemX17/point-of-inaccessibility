@@ -53,7 +53,7 @@ SVG label is a small application to add label to the best point of inaccessibili
 
 * Add label to the svg polygon by
   * Enter label name
-  * Browsing or dropping svg files to load the svg
+  * Browse or drop svg files to load the svg
   * Click the Render button to add label on the loaded svg
 * You can view all rendered SVG by clicking on view history
 
@@ -69,7 +69,7 @@ SVG label is a small application to add label to the best point of inaccessibili
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
@@ -109,7 +109,7 @@ See the [open issues](https://github.com/MakeWaterGreatAgain/SeemranCaseStudy/is
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [seemranxec](simxec@gmail.com) - simxec@gmail.com
+Seemran Xec - (simxec@gmail.com) - simxec@gmail.com
 
 Project Link: [https://github.com/MakeWaterGreatAgain/SeemranCaseStudy.git](https://github.com/MakeWaterGreatAgain/SeemranCaseStudy.git)
 
