@@ -1,3 +1,22 @@
+## Project Summary
+
+## Project Instructions
+Execute the project by running the command 'npm run start'
+
+libraries:
+    - Axios: To make API request
+    - Sass: CSS pre-processor used for better structuring of the styles
+    - Typescript: Used for error free code and faster developement
+    - React router dom: Routing of pages
+    - Tinyqueue: Binary heap priority queue used in the alogorithm
+    - Json server: Dummy server to mimic API
+    - Font Awesome: Icon library
+
+
+
+
+
+
 # air up Code Challenge
 
 Welcome, we are happy that you are interested to join air-up and our dev team, the purpose of this code challenge is to see your skills as a developer and team member.
@@ -12,12 +31,6 @@ At air-up we like to use SVGs, we used it for everything; the Digital Product de
 #### **Intro**
 
 For our polygon images, it is necessary to add a label in the **_Pole of inaccessibility_** to give proper information about the image
-
-#### **Description**
-
-As Content Maintainer,
-I want to add a label to any SVG
-so that the image can have some text at the point where it has more space, so the user can have a better look of the image and the label
 
 #### **Acceptance Criteria**
 

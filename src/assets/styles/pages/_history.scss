@@ -1,15 +1,17 @@
 .history-page {
     padding: 0px 30px;
-
+   
     ul {
         display: flex;
         justify-content: flex-start;
         padding: 0;
+        flex-wrap: wrap;
     }
 
     li {
         margin-right: 10px;
         border: 1px solid $brand-secondary;
+        margin-top: 10px;
     }
 
     .image-container {
