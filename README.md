@@ -1,78 +1,132 @@
-## Project Summary
 
-## Project Instructions
-Execute the project by running the command 'npm run start'
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+    <img src="images/logo.png" alt="Logo" width="200" height="80">
 
-libraries:
-    - Axios: To make API request
-    - Sass: CSS pre-processor used for better structuring of the styles
-    - Typescript: Used for error free code and faster developement
-    - React router dom: Routing of pages
-    - Tinyqueue: Binary heap priority queue used in the alogorithm
-    - Json server: Dummy server to mimic API
-    - Font Awesome: Icon library
+  <h3 align="center">air up - SVG Label</h3>
+
+  <p align="center">
+    A simple application to place a label in the point of inaccessibility
+    <br />
+    <a href="">View Demo</a>
+    ·
+    <a href="https://github.com/MakeWaterGreatAgain/SeemranCaseStudy/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/MakeWaterGreatAgain/SeemranCaseStudy/issues">Request Feature</a>
+  </p>
+</p>
 
 
 
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
 
 
-# air up Code Challenge
+<!-- ABOUT THE PROJECT -->
+## About The Project
+<br />
+<img src="images/home.png" alt="Logo">
 
-Welcome, we are happy that you are interested to join air-up and our dev team, the purpose of this code challenge is to see your skills as a developer and team member.
-So give your best, and show off your dev skills, we want to see how you code.
+SVG label is a small application to add label to the best point of inaccessibility 
 
-## Challenge
+* Add label to the svg polygon by
+  * Enter label name
+  * Browsing or dropping svg files to load the svg
+  * Click the Render button to add label on the loaded svg
+* You can view all rendered SVG by clicking on view history
 
-At air-up we like to use SVGs, we used it for everything; the Digital Product department has sent us a new requirement:
+### Built With
 
----
 
-#### **Intro**
+* [React JS](https://reactjs.org/)
+* [Typescript](https://www.typescriptlang.org/)
+* [Sass](https://sass-lang.com/)
 
-For our polygon images, it is necessary to add a label in the **_Pole of inaccessibility_** to give proper information about the image
 
-#### **Acceptance Criteria**
 
-- The app can load SVGs
-- The app can calculate the pole of inaccessibility of the upload SVG
-- The app can place a label in the point of inaccessibility
+<!-- GETTING STARTED -->
+## Getting Started
 
----
+To get a local copy up and running follow these simple example steps.
 
-Hint: all our SVG images are polygons.
+### Prerequisites
 
-Extra points:
+Require Node to run this project
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-- The app can store the SVG and its labels
-- The app can preview the history of all SVGs with their corresponding labels
-- There are implemented unit tests
-- the app is deployed and there is a CI/CD pipeline
+### Installation
 
-#### _Final Comment_
+1. Clone the repo
+   ```sh
+   git clone https://github.com/MakeWaterGreatAgain/SeemranCaseStudy.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run API in `json server`
+   ```JS
+   json-server --watch db.json --port 3004
+   ```
+5. Excute the application
+   ```JS
+   npm run start
+   ```
 
-Please don't use any library to calculate the pole of inaccessibility, we would like to see how you implement your own algorithm.
 
-Apart from that, you can use other libraries, but please leave an explanatory README of your decisions to choose the libraries and how to run the project.
+<!-- ROADMAP -->
+## Roadmap
 
-You can also make other assumptions, but try to comment why did you make it.
+See the [open issues](https://github.com/MakeWaterGreatAgain/SeemranCaseStudy/issues) for a list of proposed features (and known issues).
 
-This is private repository just for you and our dev team.
 
-#### What we want to see
 
-- clean code
-- clean and relevant commits
-- well structured files and components
+<!-- CONTACT -->
+## Contact
 
-#### When you are done
+Your Name - [seemranxec](simxec@gmail.com) - simxec@gmail.com
 
-Please create a pull request 24 hours before our interview.
+Project Link: [https://github.com/MakeWaterGreatAgain/SeemranCaseStudy.git](https://github.com/MakeWaterGreatAgain/SeemranCaseStudy.git)
 
-> Consider that any commit done after the deadline (24 hours before your interview) will not be taken into account
 
-Best of lucks
 
-##### Open Positions
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+* [Typescript](https://www.typescriptlang.org/) : Used for error free code and faster developement
+* [Sass](https://sass-lang.com/) : CSS pre-processor used for better structuring of the styles
+* [Axios](https://axios-http.com/) : To make API request
+* [React Router](https://reactrouter.com/web/guides/quick-start) : Used for routing of pages
+* [TinyQueue](https://github.com/mourner/tinyqueue): Binary heap priority queue used in the alogorithm
+* [Font Awesome](https://fontawesome.com/): Icon library
+* [JSON Server](https://fontawesome.com/): Dummy server to mimic API
 
-We are always looking for talented people to join our team. [Check our open positions and apply!](https://www.air-up.com/pages/career-at-air-up?)
+</br>
+
+#### References used for this project
+   * https://blog.mapbox.com/a-new-algorithm-for-finding-a-visual-center-of-a-polygon-7c77e6492fbc
+   * https://sites.google.com/site/polesofinaccessibility/
