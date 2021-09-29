@@ -4,7 +4,8 @@ import './assets/styles/App.scss'
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 import { History } from 'pages/History';
 import NotFound from 'pages/NotFound';
@@ -14,7 +15,7 @@ function App() {
     <Router>
       <div className='App'>
         <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
+          <Link to="/"><img src={logo} className='App-logo' alt='logo' /></Link>
         </header>
         <Switch>
           <Route exact path="/">
