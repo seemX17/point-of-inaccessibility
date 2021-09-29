@@ -124,12 +124,18 @@ export function AddPolygon() {
             let reader = new FileReader()
             reader.addEventListener('load', (e) => {
                 let fileContent: any = e.target?.result;
-                setFile(fileContent);
-                //Render svg on svg viewer
-                let renderDiv = document.getElementById("renderImage");
-                if (renderDiv)
-                    renderDiv.innerHTML = '';
-                renderDiv?.insertAdjacentHTML('beforeend', fileContent);//insert svg element in empty div created
+            setFile(fileContent);
+            //Render svg on svg viewer
+            let renderDiv = document.getElementById("renderImage");
+            if (renderDiv) {
+                let newWidth = renderDiv.clientWidth;
+                let newHeight = renderDiv.clientHeight;
+                renderDiv.innerHTML = '';
+                renderDiv.insertAdjacentHTML('beforeend', fileContent); //insert svg element in empty div created
+                let svg = renderDiv.querySelector('svg');
+                svg?.setAttribute("width", `${newWidth}px`)
+                svg?.setAttribute("height", `${newHeight}px`)
+            }
             });
             reader.readAsBinaryString(file);
             setFileName(file.name);
