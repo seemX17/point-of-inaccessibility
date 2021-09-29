@@ -1,15 +1,10 @@
 .add-polygon-page {
-    padding: 0px 30px;
+    padding: 0px 2rem 2rem;
 
     .container {
-        display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-    }
-
-    .submit {
-        width: 100%;
     }
 
     text {
@@ -22,13 +17,12 @@
 
     //svg viewer
     .image-preview {
-        width: 55%;
-        height: 70vmin;
-        display: flex;
+        min-width: 300px;
+        margin-left: 2rem;
         justify-content: center;
         align-items: center;
         border: 1px solid $brand-secondary;
-        padding: 20px;
+        border-radius: 4px;
 
         svg {
             height: 100%;
@@ -37,13 +31,12 @@
 
     //form
     .form {
-        height: 70vmin;
-        width: 70vmin;
-        display: flex;
+        width: 500px;
         align-items: flex-start;
-        flex-direction: column;
         padding: 20px 30px;
-        box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.001), 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+        height: calc(100% - 40px);
+        box-shadow: 0 10px 40px rgba(0, 64, 128, .1);
+        border-radius: 4px;
     }
 
     //form input
@@ -52,23 +45,21 @@
         flex-direction: column;
         justify-content: flex-start;
         color: $brand-primary;
-        font-family: 'Mulish';
         margin-bottom: 2em;
         width: 100%;
 
         label {
             text-align: left;
-            font-weight: 700;
-            font-size: 20px;
+            font-size: .8rem;
         }
 
         input {
-            padding: 13px;
-            //font-weight: 400;
+            padding: 12px;
+            border-radius: 2px;
+            font-weight: 600;
             color: $brand-primary;
             border: 1px solid #dae1e7;
             margin-top: 5px;
-            font-size: 18px;
 
             &:focus-visible {
                 outline: none;
@@ -79,7 +70,6 @@
     //Drag and Drop
     .drag-area {
         border: 2px dashed #dae1e7;
-        height: 500px;
         width: 100%;
         border-radius: 5px;
         display: flex;
@@ -98,15 +88,13 @@
         color: #9a9a96;
     }
 
-    .drag-area header {
-        font-size: 20px;
-        font-weight: 500;
+    .drag-area h2 {
+        font-size: 1rem;
         color: $brand-primary;
     }
 
     .drag-area span {
-        font-size: 15px;
-        font-weight: 500;
+        font-size: 1rem;
         color: $brand-primary;
         margin: 10px 0 15px 0;
     }

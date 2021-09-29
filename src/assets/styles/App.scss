@@ -6,6 +6,9 @@
 
 .App {
   color: $brand-primary;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -24,7 +27,8 @@
 .App-link {
   color: $brand-secondary;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  transition: all 200ms;
 
   &:hover {
     color: #5f249f;
@@ -32,7 +36,8 @@
 }
 
 .App-navigation {
-  margin-top: 2em;
+  margin: 2em 0;
+
   display: flex;
   justify-content: space-between;
 }

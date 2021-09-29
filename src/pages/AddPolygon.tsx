@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { addNewImage, imageModel } from 'shared/services/images';
 import { listToMatrix } from 'shared/utils/conversion';
 import { QuadTree } from 'shared/utils/quadtree';
 
 export function AddPolygon() {
-    let imageI: any = React.createRef()
     const [labelText, setLabelText] = useState("I'm here!");
     const [file, setFile] = useState('');
     const [fileName, setFileName] = useState('');
@@ -13,7 +12,7 @@ export function AddPolygon() {
     const [isActive, setIsActive] = useState(false);
 
     //On file selection through Browse file
-    const onFileChange = (event: any) => {
+    const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         //convert type file to svg element
         let reader = new FileReader()
         reader.addEventListener('load', (e) => {
@@ -21,12 +20,21 @@ export function AddPolygon() {
             setFile(fileContent);
             //Render svg on svg viewer
             let renderDiv = document.getElementById("renderImage");
-            if (renderDiv)
+            if (renderDiv) {
+                let newWidth = renderDiv.clientWidth;
+                let newHeight = renderDiv.clientHeight;
                 renderDiv.innerHTML = '';
-            renderDiv?.insertAdjacentHTML('beforeend', fileContent);//insert svg element in empty div created
+                renderDiv.insertAdjacentHTML('beforeend', fileContent); //insert svg element in empty div created
+                let svg = renderDiv.querySelector('svg');
+                svg?.setAttribute("width", `${newWidth}px`)
+                svg?.setAttribute("height", `${newHeight}px`)
+            }
         });
-        reader.readAsBinaryString(event?.target.files[0]);
-        setFileName(event?.target.files[0].name);
+        let fileInput = event.target as HTMLInputElement;
+        if (fileInput.files && fileInput.files?.length > 0) {
+            reader.readAsBinaryString(fileInput.files[0]);
+            setFileName(fileInput.files[0].name);
+        }
     }
 
     //On click of Render button add label to SVG
@@ -85,7 +93,7 @@ export function AddPolygon() {
 
     //Validation
     const valid = () => {
-        if (labelText != "" && file)
+        if (labelText !== "" && file)
             return true
         return false
     }
@@ -109,7 +117,7 @@ export function AddPolygon() {
     const handleDrop = (e: any) => {
         e.preventDefault();
         let file = e.dataTransfer.files[0];
-        if (file.type != "image/svg+xml") {
+        if (file.type !== "image/svg+xml") {
             alert("Please add svg only")
         } else {
             //convert type file to svg element
@@ -126,40 +134,38 @@ export function AddPolygon() {
             reader.readAsBinaryString(file);
             setFileName(file.name);
         }
-        console.log(file)
         setIsActive(false);
         e.stopPropagation();
     };
 
-    return <div className="add-polygon-page">
+    return <div className="add-polygon-page d-flex f-column flex1">
         <div className="App-navigation">
             <h2 className="title">Create SVG</h2>
             <Link to="/history" className="App-link"> View History <i className="fas fa-chevron-right"></i></Link>
         </div>
-        <div className="container">
-            <div className="form" >
-                {/* <h2 className="title">Create SVG</h2> */}
+        <div className="container d-flex flex1">
+            <form className="form d-flex f-column" >
                 <div className="label-input">
                     <label>Label Name</label>
                     <input type="text" value={labelText} onChange={(e) => { setLabelText(e.target.value) }} />
                 </div>
-                <div className={`drag-area ${isActive ? 'active' : ''}`} onDrop={e => handleDrop(e)}
+                <div className={`drag-area flex1 ${isActive ? 'active' : ''}`} onDrop={e => handleDrop(e)}
                     onDragOver={e => handleDragOver(e)}
                     onDragEnter={e => handleDragEnter(e)}
                     onDragLeave={e => handleDragLeave(e)}>
                     <div className="icon"><i className="fas fa-cloud-upload-alt"></i></div>
-                    <header>Drag &amp; Drop to Upload File</header>
+                    <h2>Drag &amp; Drop to Upload File</h2>
                     <span>OR</span>
                     <button className="button-outline">Browse File
                         <input type="file" name="polygon" accept="image/svg+xml" onChange={onFileChange} />
                     </button>
-                    {fileName ? <h6>File added: {fileName}</h6> : <h6></h6>}
+                    {fileName ? <h6>File added: {fileName}</h6> : null}
                 </div>
                 <label className="error" style={{ display: showError ? 'flex' : 'none', marginBottom: '5px' }}>All fields are mandatory!</label>
-                <button className="button submit" onClick={render}>Render</button>
-            </div>
-            <div id="renderImage" className='image-preview' ref={imageI}>
-                SVG preview
+                <button className="button submit w-100" onClick={render}>Render</button>
+            </form>
+            <div id="renderImage" className='image-preview d-flex flex1 h-100'>
+                <span>SVG preview</span>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+//function to convert one dimensional array to two dimensional array
 export function listToMatrix(list: number[], elementsPerSubArray: number) {
     var matrix: any[] = [], i, k;
     for (i = 0, k = -1; i < list.length; i++) {

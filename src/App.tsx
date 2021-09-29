@@ -4,8 +4,7 @@ import './assets/styles/App.scss'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { History } from 'pages/History';
 import NotFound from 'pages/NotFound';

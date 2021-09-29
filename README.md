@@ -9,7 +9,6 @@
   <p align="center">
     A simple application to place a label in the point of inaccessibility
     <br />
-    <a href="">View Demo</a>
     ·
     <a href="https://github.com/MakeWaterGreatAgain/SeemranCaseStudy/issues">Report Bug</a>
     ·
@@ -109,7 +108,7 @@ See the [open issues](https://github.com/MakeWaterGreatAgain/SeemranCaseStudy/is
 <!-- CONTACT -->
 ## Contact
 
-Seemran Xec - (simxec@gmail.com) - simxec@gmail.com
+Seemran Xec - (simxec@gmail.com)
 
 Project Link: [https://github.com/MakeWaterGreatAgain/SeemranCaseStudy.git](https://github.com/MakeWaterGreatAgain/SeemranCaseStudy.git)
 
@@ -128,5 +127,4 @@ Project Link: [https://github.com/MakeWaterGreatAgain/SeemranCaseStudy.git](http
 </br>
 
 #### References used for this project
-   * https://blog.mapbox.com/a-new-algorithm-for-finding-a-visual-center-of-a-polygon-7c77e6492fbc
    * https://sites.google.com/site/polesofinaccessibility/
