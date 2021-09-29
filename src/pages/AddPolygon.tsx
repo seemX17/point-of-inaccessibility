@@ -144,7 +144,7 @@ export function AddPolygon() {
             <Link to="/history" className="App-link"> View History <i className="fas fa-chevron-right"></i></Link>
         </div>
         <div className="container d-flex flex1">
-            <form className="form d-flex f-column" >
+            <div className="form d-flex f-column" >
                 <div className="label-input">
                     <label>Label Name</label>
                     <input type="text" value={labelText} onChange={(e) => { setLabelText(e.target.value) }} />
@@ -163,7 +163,7 @@ export function AddPolygon() {
                 </div>
                 <label className="error" style={{ display: showError ? 'flex' : 'none', marginBottom: '5px' }}>All fields are mandatory!</label>
                 <button className="button submit w-100" onClick={render}>Render</button>
-            </form>
+            </div>
             <div id="renderImage" className='image-preview d-flex flex1 h-100'>
                 <span>SVG preview</span>
             </div>
